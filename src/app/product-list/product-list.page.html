@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+   
+    <ion-title>Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title  size="large">Productos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Productos disponibles</ion-label>
+    </ion-list-header>
+    @for (product of products; track product._id) {
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img [src]="product.image" [alt]="product.name">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{product.name}}</h2>
+        <p>{{product.description}}</p>
+        <p>{{product.price | currency: 'USD'}}</p>
+      </ion-label>
+      <ion-button mat-button (click)="onClick(product)" color="primary"> Comprar</ion-button>
+    </ion-item>
+    }
+
+  </ion-list>
+
+</ion-content>
+<ion-button [routerLink]="['/carrito']">Ir al carrito</ion-button>

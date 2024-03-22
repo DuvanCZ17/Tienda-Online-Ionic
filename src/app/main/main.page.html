@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+
+    <ion-title>Carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar >
+      <ion-title size="large">Carrito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    
+    <ion-item *ngFor="let product of products; let indice = index;">
+      <ion-thumbnail slot="start"><img [src]="product.image" [alt]="product.name"></ion-thumbnail>
+      <ion-label>{{product.name}}</ion-label>
+      <ion-label>{{product.description}}</ion-label>
+      <ion-label>{{product.price | currency: 'USD'}}</ion-label>
+      <ion-button (click)="onClickDelete(indice)" color="danger">Borrar</ion-button>
+    </ion-item>
+  </ion-list>
+  <h1>Total a pagar</h1>
+  <p>{{total | currency: 'USD'}}</p>
+</ion-content>
+
+<ion-button [routerLink]="['/lista-productos']">Lista de Productos</ion-button>
