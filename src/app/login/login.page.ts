@@ -33,12 +33,19 @@ export class LoginPage implements OnInit {
     if(usuario.nombre == f.nombre && usuario.password == f.password){
       console.log('Ingresado');
       this.navCtrl.navigateRoot('lista-productos')
+      const alert = await this.alertController.create({
+        header: 'Bienvenido',
+        message: 'Sesion iniciada correctamente',
+        buttons: ['Aceptar']
+      })
+  
+      await alert.present();
     }else{
       const alert = await this.alertController.create({
         header: 'Datos incorrectos',
         message: 'El correo o la contraseña no corresponden',
         buttons: ['Aceptar']
-      });
+      })
   
       await alert.present();
     }
